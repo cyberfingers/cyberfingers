@@ -1,0 +1,7 @@
+User-Agent: *
+ 
+Disallow: /seopanel/
+Disallow: /seopanel-atl/
+
+Sitemap: https://cyberfingers.net/sitemap.xml
+Sitemap: https://cyberfingers.net/images_sitemap.xml
