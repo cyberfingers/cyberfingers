@@ -1,7 +1,9 @@
 User-Agent: *
- 
-Disallow: /seopanel/
-Disallow: /seopanel-atl/
+Disallow: /
+
+Allow: /$
+Allow: /about$
+Allow: /contact$
 
 Sitemap: https://cyberfingers.net/sitemap.xml
 Sitemap: https://cyberfingers.net/images_sitemap.xml
