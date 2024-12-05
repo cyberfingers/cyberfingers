@@ -4,6 +4,10 @@ Disallow: /
 Allow: /index.html$
 Allow: /about-seo-experts.html$
 Allow: /seo-experts-services.html$
+Allow: /sitemap.xml$
+Allow: /images_sitemap.xml$
+Allow: /img/$
+Allow: /img/*.jpg$
 
 Sitemap: https://cyberfingers.net/sitemap.xml
 Sitemap: https://cyberfingers.net/images_sitemap.xml
