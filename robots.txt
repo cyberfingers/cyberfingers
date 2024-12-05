@@ -1,9 +1,9 @@
 User-Agent: *
 Disallow: /
 
-Allow: /$
-Allow: /about$
-Allow: /contact$
+Allow: /index.html$
+Allow: /about-seo-experts.html$
+Allow: /seo-experts-services.html$
 
 Sitemap: https://cyberfingers.net/sitemap.xml
 Sitemap: https://cyberfingers.net/images_sitemap.xml
