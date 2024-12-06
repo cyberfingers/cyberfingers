@@ -18,24 +18,4 @@
         <image:title>Keyword Results for Atlanta Georgia Real Estate</image:title>
       </image:image>
   </url>
-  <url>
-    <loc>https://cyberfingers.net/index.html</loc>
-    <lastmod>2019-12-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-      <image:image>
-        <image:loc>https://cyberfingers.net/img/the-seo-expert.jpg</image:loc>
-        <image:title>The SEO Expert</image:title>
-      </image:image>
-  </url>
-  <url>
-    <loc>https://cyberfingers.net/about-seo-experts.html</loc>
-    <lastmod>2019-12-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-      <image:image>
-        <image:loc>https://cyberfingers.net/img/womens-hunting-scarves-search-results.jpg</image:loc>
-        <image:title>Women's Hunting Scarves Search Results</image:title>
-      </image:image>
-  </url>
 </urlset>
