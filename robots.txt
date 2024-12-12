@@ -9,5 +9,17 @@ Allow: /images_sitemap.xml$
 Allow: /img/$
 Allow: /img/*.jpg$
 
+# Allow all .css files in /css/ directory
+Allow: /css/*.css$
+
+# Allow all .css files in /vendor/bootstrap/css/ directory
+Allow: /vendor/bootstrap/css/*.css$
+
+# Allow all .js files in /vendor/bootstrap/js/ directory
+Allow: /vendor/bootstrap/js/*.js$
+
+# Allow all .js files in /vendor/jquery/ directory
+Allow: /vendor/jquery/*.js$
+
 Sitemap: https://cyberfingers.net/sitemap.xml
 Sitemap: https://cyberfingers.net/images_sitemap.xml
