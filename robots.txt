@@ -1,9 +1,9 @@
 User-Agent: *
 Disallow: /
 
-Allow: /index.html$
-Allow: /about-seo-experts.html$
-Allow: /seo-experts-services.html$
+Allow: /$
+Allow: /about-seo-experts$
+Allow: /seo-experts-services$
 Allow: /sitemap.xml$
 Allow: /images_sitemap.xml$
 Allow: /img/$
