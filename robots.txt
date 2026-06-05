@@ -8,6 +8,7 @@ Allow: /sitemap.xml$
 Allow: /images_sitemap.xml$
 Allow: /img/$
 Allow: /img/*.jpg$
+Allow: /sitemap_com_newest_coming_soon_compass_04062026_09.xml.gz
 
 # Allow all .css files in /css/ directory
 Allow: /css/*.css$
@@ -23,3 +24,4 @@ Allow: /vendor/jquery/*.js$
 
 Sitemap: https://cyberfingers.net/sitemap.xml
 Sitemap: https://cyberfingers.net/images_sitemap.xml
+
