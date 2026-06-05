@@ -1,14 +1,5 @@
+
 User-agent: *
-Disallow: /
-
-Allow: /$
-Allow: /about-seo-experts
-Allow: /seo-experts-services
-Allow: /sitemap.xml
-Allow: /images_sitemap.xml
-
-Allow: /sitemap_com_newest_coming_soon_compass_04062026_09.xml.gz
-Allow: /sitemap_com_newest_hourly_listings_26052026_11.xml.gz
 
 Sitemap: https://cyberfingers.net/sitemap.xml
 Sitemap: https://cyberfingers.net/images_sitemap.xml
