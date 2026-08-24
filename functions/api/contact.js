@@ -1,5 +1,3 @@
-import { EmailMessage } from "cloudflare:email";
-
 const JSON_HEADERS = {
   "content-type": "application/json; charset=utf-8",
   "cache-control": "no-store",
@@ -44,34 +42,25 @@ const verifyTurnstile = async (secret, token, remoteIp) => {
   return result.success === true && result.action === "contact";
 };
 
-const buildEmail = ({ name, email, website, message, request, sender, destination }) => {
-  const submittedAt = new Date().toISOString();
-  const source = singleLine(request.headers.get("referer") || request.url, 500);
-  const subject = `CyberFingers website inquiry from ${name}`;
-  const text = [
-    "New inquiry from the CyberFingers website",
-    "",
-    `Name: ${name}`,
-    `Reply-to: ${email}`,
-    `Website: ${website || "Not provided"}`,
-    `Submitted: ${submittedAt}`,
-    `Source: ${source}`,
-    "",
-    "Message:",
-    message,
-  ].join("\r\n");
+const sendToRelay = async ({ env, name, email, website, message, request }) => {
+  const response = await fetch(env.CONTACT_RELAY_URL, {
+    method: "POST",
+    headers: { "content-type": "application/json; charset=utf-8" },
+    body: JSON.stringify({
+      secret: env.CONTACT_RELAY_SECRET,
+      name,
+      email,
+      website,
+      message,
+      submittedAt: new Date().toISOString(),
+      source: singleLine(request.headers.get("referer") || request.url, 500),
+    }),
+    redirect: "follow",
+  });
 
-  return [
-    `From: CyberFingers Website <${singleLine(sender, 254)}>`,
-    `To: ${singleLine(destination, 254)}`,
-    `Reply-To: ${email}`,
-    `Subject: ${subject}`,
-    "MIME-Version: 1.0",
-    'Content-Type: text/plain; charset="UTF-8"',
-    "Content-Transfer-Encoding: 8bit",
-    "",
-    text,
-  ].join("\r\n");
+  if (!response.ok) return false;
+  const result = await response.json().catch(() => null);
+  return result?.ok === true;
 };
 
 export async function onRequestPost({ request, env }) {
@@ -105,7 +94,7 @@ export async function onRequestPost({ request, env }) {
     }, 400);
   }
 
-  if (!env.TURNSTILE_SECRET_KEY || !env.CONTACT_SENDER || !env.CONTACT_DESTINATION || !env.CONTACT_EMAIL) {
+  if (!env.TURNSTILE_SECRET_KEY || !env.CONTACT_RELAY_URL || !env.CONTACT_RELAY_SECRET) {
     return json({ ok: false, message: "The contact form is being configured. Please try again shortly." }, 503);
   }
 
@@ -119,17 +108,8 @@ export async function onRequestPost({ request, env }) {
   }
 
   try {
-    const raw = buildEmail({
-      name,
-      email,
-      website,
-      message,
-      request,
-      sender: env.CONTACT_SENDER,
-      destination: env.CONTACT_DESTINATION,
-    });
-    const emailMessage = new EmailMessage(env.CONTACT_SENDER, env.CONTACT_DESTINATION, raw);
-    await env.CONTACT_EMAIL.send(emailMessage);
+    const sent = await sendToRelay({ env, name, email, website, message, request });
+    if (!sent) throw new Error("Relay rejected the message.");
   } catch {
     return json({ ok: false, message: "Your message could not be sent. Please try again shortly." }, 502);
   }
