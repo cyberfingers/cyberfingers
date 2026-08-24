@@ -3,5 +3,10 @@
   "name": "cyberfingers",
   "account_id": "7dca8c9e3dd41e9aa7337f4c9bb620be",
   "compatibility_date": "2026-08-24",
-  "pages_build_output_dir": "./public"
+  "pages_build_output_dir": "./public",
+  "send_email": [
+    {
+      "name": "CONTACT_EMAIL"
+    }
+  ]
 }
