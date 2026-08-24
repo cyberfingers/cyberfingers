@@ -3,9 +3,9 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "check": "wrangler deploy --dry-run"
+    "dev": "wrangler pages dev public",
+    "deploy": "wrangler pages deploy public --project-name=cyberfingers",
+    "check": "wrangler pages functions build --outdir=.wrangler/tmp/functions"
   },
   "devDependencies": {
     "wrangler": "^4.34.0"

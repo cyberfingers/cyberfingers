@@ -15,6 +15,8 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/styles.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="/assets/contact.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -25,7 +27,7 @@
         <a href="/" aria-current="page">Overview</a>
         <a href="/about-seo-experts">About</a>
         <a href="/seo-experts-services">Services</a>
-        <a class="nav-cta" href="mailto:seo@cyberfingers.net?subject=SEO%20consulting%20inquiry">Start a conversation</a>
+        <a class="nav-cta" href="#contact">Start a conversation</a>
       </nav>
     </div>
   </header>
@@ -118,13 +120,41 @@
     </section>
 
     <section class="section" id="contact">
-      <div class="container cta-panel">
-        <div>
+      <div class="container cta-panel contact-panel">
+        <div class="contact-copy">
           <p class="kicker">Start with the right questions</p>
           <h2>Ready for a clearer view of your SEO?</h2>
-          <p>Share the site you are working on and the search problem you want to solve.</p>
+          <p>Share the site you are working on and the search problem you want to solve. Your message is delivered privately; no CyberFingers email address is published here.</p>
         </div>
-        <a class="button button-primary" href="mailto:seo@cyberfingers.net?subject=SEO%20consulting%20inquiry">Email CyberFingers <span aria-hidden="true">→</span></a>
+        <form class="contact-form" action="/api/contact" method="post" data-contact-form>
+          <div class="form-row">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required>
+          </div>
+          <div class="form-row">
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          </div>
+          <div class="form-row form-row-wide">
+            <label for="contact-website">Website <span>(optional)</span></label>
+            <input id="contact-website" name="website" type="text" inputmode="url" autocomplete="url" maxlength="500" placeholder="example.com">
+          </div>
+          <div class="form-row form-row-wide">
+            <label for="contact-message">How can CyberFingers help?</label>
+            <textarea id="contact-message" name="message" rows="6" minlength="20" maxlength="5000" required></textarea>
+          </div>
+          <div class="form-trap" aria-hidden="true">
+            <label for="contact-company">Company</label>
+            <input id="contact-company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-row-wide">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEap77MPvIQZXqDi" data-action="contact" data-theme="light"></div>
+          </div>
+          <div class="form-actions form-row-wide">
+            <button class="button button-primary" type="submit">Send message</button>
+            <p class="form-status" data-form-status role="status" aria-live="polite" tabindex="-1"></p>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -132,7 +162,7 @@
   <footer class="site-footer">
     <div class="container footer-wrap">
       <span>© 2026 CyberFingers. Practical SEO consulting.</span>
-      <nav class="footer-links" aria-label="Footer navigation"><a href="/about-seo-experts">About</a><a href="/seo-experts-services">Services</a><a href="mailto:seo@cyberfingers.net">Email</a></nav>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="/about-seo-experts">About</a><a href="/seo-experts-services">Services</a><a href="#contact">Contact</a></nav>
     </div>
   </footer>
 </body>

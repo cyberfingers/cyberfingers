@@ -552,6 +552,116 @@ h1 {
   color: #b9c7d8;
 }
 
+.contact-panel {
+  grid-template-columns: minmax(0, .82fr) minmax(420px, 1.18fr);
+  align-items: start;
+}
+
+.contact-copy {
+  position: sticky;
+  top: 32px;
+  padding-top: 14px;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: clamp(24px, 4vw, 42px);
+  color: var(--ink);
+  background: var(--white);
+  border-radius: 22px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, .2);
+}
+
+.form-row {
+  display: grid;
+  gap: 8px;
+}
+
+.form-row-wide,
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.form-row label {
+  color: var(--ink);
+  font-size: .88rem;
+  font-weight: 800;
+}
+
+.form-row label span {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 13px 14px;
+  color: var(--ink);
+  background: #fbfcfe;
+  border: 1px solid #c9d3e1;
+  border-radius: 10px;
+  font: inherit;
+  font-size: .95rem;
+}
+
+.form-row textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  border-color: var(--blue);
+  outline: 3px solid rgba(37, 99, 235, .16);
+}
+
+.form-trap {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.form-actions .button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.form-actions .button:disabled {
+  cursor: wait;
+  opacity: .66;
+  transform: none;
+}
+
+.form-status {
+  flex: 1 1 240px;
+  margin: 0 !important;
+  color: var(--ink-soft) !important;
+  font-size: .9rem;
+}
+
+.form-status-success {
+  color: #087443 !important;
+  font-weight: 750;
+}
+
+.form-status-error {
+  color: #b42318 !important;
+  font-weight: 750;
+}
+
 .page-hero {
   color: var(--white);
   background:
@@ -710,8 +820,13 @@ h1 {
 @media (max-width: 900px) {
   .hero-grid,
   .split,
-  .cta-panel {
+  .cta-panel,
+  .contact-panel {
     grid-template-columns: 1fr;
+  }
+
+  .contact-copy {
+    position: static;
   }
 
   .hero-grid {
@@ -817,6 +932,10 @@ h1 {
   .footer-wrap {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr;
   }
 }
 
