@@ -76,11 +76,6 @@ export async function onRequestPost({ request, env }) {
     return json({ ok: false, message: "The form could not be read. Please try again." }, 400);
   }
 
-  // Bots often fill this hidden field. Return success without sending anything.
-  if (singleLine(form.get("company"), 200)) {
-    return json({ ok: true, message: "Thanks. Your message has been received." });
-  }
-
   const name = singleLine(form.get("name"), 100);
   const email = singleLine(form.get("email"), 254).toLowerCase();
   const website = singleLine(form.get("website"), 500);
