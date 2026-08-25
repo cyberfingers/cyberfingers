@@ -26,4 +26,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name=cyberfingers --branch=${{ github.ref_name }}
+          # Cloudflare Pages treats the configured production branch (main) as
+          # production. Deploy this migration branch to that target until the
+          # rebuilt site is merged, so custom domains receive the same release.
+          command: pages deploy public --project-name=cyberfingers --branch=main
