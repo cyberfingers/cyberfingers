@@ -846,6 +846,8 @@ a:focus-visible {
 .credentials p { color: var(--ink-soft); }
 .team-photo { max-width: 900px; margin: 0; }
 .team-photo img { width: 100%; height: auto; border-radius: var(--radius); }
+.team-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
+.team-gallery .team-photo img { aspect-ratio: 3 / 2; object-fit: cover; object-position: center; }
 .team-photo figcaption { max-width: 780px; margin-top: 18px; color: var(--ink-soft); font-size: .92rem; }
 .photo-note { display: block; margin-top: 6px; color: var(--ink-soft); font-size: .8rem; }
 .case-nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
@@ -862,6 +864,7 @@ a:focus-visible {
 .case-takeaway { margin-top: 30px; padding: 22px 24px; background: #eaf0fa; border-left: 3px solid var(--blue); border-radius: 0 12px 12px 0; }
 
 @media (max-width: 900px) {
+  .team-gallery { grid-template-columns: 1fr; }
   .case-layout { grid-template-columns: 1fr; }
   .hero-grid,
   .split,
