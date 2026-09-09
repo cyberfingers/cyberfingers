@@ -4,10 +4,12 @@ document.querySelectorAll('[data-artwork-details]').forEach((details) => {
   const summary = details.querySelector('summary');
   const panel = details.querySelector('.artwork-popover');
   let leaveTimer;
+  let openedByHover = false;
 
   const close = (restoreFocus = false) => {
     window.clearTimeout(leaveTimer);
     details.open = false;
+    openedByHover = false;
     if (restoreFocus) summary.focus();
   };
 
@@ -23,13 +25,22 @@ document.querySelectorAll('[data-artwork-details]').forEach((details) => {
   details.addEventListener('pointerenter', (event) => {
     if (event.pointerType !== 'mouse' || !window.matchMedia('(hover: hover)').matches) return;
     window.clearTimeout(leaveTimer);
-    details.open = true;
+    if (!details.open) {
+      openedByHover = true;
+      details.open = true;
+    }
+  });
+
+  summary.addEventListener('click', (event) => {
+    // A first click pins the hover preview open; the next click closes it.
+    if (details.open && openedByHover) event.preventDefault();
+    openedByHover = false;
   });
 
   details.addEventListener('pointerleave', (event) => {
     if (event.pointerType !== 'mouse') return;
     leaveTimer = window.setTimeout(() => {
-      if (!details.contains(document.activeElement)) close();
+      if (openedByHover && !details.contains(document.activeElement)) close();
     }, 220);
   });
 
